@@ -1,0 +1,59 @@
+{% extends "_admin/template.html" %}
+{% block title %}
+    Panel de Administracion
+{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <div class="card">
+                            <div class="header text-center">
+                                <h4 class="title">Convierte y Ordena</h4>
+                                <p class="category">Herramienta para convertir y ordenar los legajos</p>
+                                <br>
+                            </div>
+                            <div class="card-body">
+                                <form action="/_admin/convertir" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Ingrese el caracter</label>
+                                            <input type="text" class="form-control" name="varCaracter" placeholder="Caracter">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Cadena a Reemplazar</label>
+                                                <textarea rows="10" cols="80" class="form-control" placeholder="Ingresar cadena" name="varCadena"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Obtener</button>     
+                                    <div class="clearfix"></div> 
+                                </form>  
+                                {% if res != None %}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Resultado</label>
+                                             <ul>
+                                                {% for x in res %}
+                                                <li>{{ x}}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>   
+                                {% endif %}                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
