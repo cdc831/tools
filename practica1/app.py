@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, flash, session
 from flaskext.mysql import MySQL
-import bcrypt
+#import bcrypt
 
 app = Flask(__name__)
 app.secret_key = "CanteroSoft"
@@ -9,12 +9,29 @@ app.secret_key = "CanteroSoft"
 # -----------------------                 MYSQL          -------------------------------
 # --------------------------------------------------------------------------------------
 mysql = MySQL()
-app.config['MYSQL_DATABASE_HOST'] = '181.116.17.78'
-app.config['MYSQL_DATABASE_PORT'] = 3308
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '12345'
-app.config['MYSQL_DATABASE_DB'] = 'canterosoft'
+#BD RUSO
+#app.config['MYSQL_DATABASE_HOST'] = '181.116.17.78'
+#app.config['MYSQL_DATABASE_PORT'] = 3308
+#app.config['MYSQL_DATABASE_USER'] = 'root'
+#app.config['MYSQL_DATABASE_PASSWORD'] = '12345'
+#app.config['MYSQL_DATABASE_DB'] = 'canterosoft'
+#mysql.init_app(app)
+
+#BD CleverCloud
+app.config['MYSQL_DATABASE_HOST'] = 'bm2ucuz3qumjhf1gcr1x-mysql.services.clever-cloud.com'
+app.config['MYSQL_DATABASE_PORT'] = 3306
+app.config['MYSQL_DATABASE_USER'] = 'uxb4vdmxxxsrwmyu'
+app.config['MYSQL_DATABASE_PASSWORD'] = 's85jy1hNSME1DzSoG7U0'
+app.config['MYSQL_DATABASE_DB'] = 'bm2ucuz3qumjhf1gcr1x'
 mysql.init_app(app)
+
+#BD Local
+#app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+##app.config['MYSQL_DATABASE_PORT'] = 3308
+#app.config['MYSQL_DATABASE_USER'] = 'root'
+#app.config['MYSQL_DATABASE_PASSWORD'] = ''
+#app.config['MYSQL_DATABASE_DB'] = 'canterosoft'
+#mysql.init_app(app)
 
 
 class Database:
@@ -40,7 +57,7 @@ class Database:
 
 
 # Para el Encriptamiento
-semilla = bcrypt.gensalt()
+#semilla = bcrypt.gensalt()
 
 
 
@@ -162,4 +179,4 @@ def salir():
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=True, port=5000, host='0.0.0.0')
